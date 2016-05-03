@@ -1,0 +1,45 @@
+\documentclass[11pt, oneside]{article}
+\usepackage[margin=1in]{geometry}
+\geometry{letterpaper}
+\usepackage{amssymb}
+\usepackage[sharp]{easylist}
+\usepackage{relsize}
+
+\pagenumbering{gobble}              % No page numbering
+\setlength{\parindent}{0em}         % No paragraph indenting
+\setlength{\parskip}{0.5em}         % Paragraph spacing
+
+\begin{document}
+
+\section*{Title}
+
+% Beginning of note
+\begin{easylist}[itemize]
+\ListProperties(Style*=$\bullet$ , Style2*=\tiny$\blacksquare$ , Style3*=$\circ$ , Style4*=$\diamond$ )
+
+# Bullet point here
+
+## Here's a sub item
+
+### Here's a sub sub item
+
+#### Here's a sub sub sub item
+
+# Here's some inline math $a^2 + b^2 = c^2$ hello
+
+# Hello {\LARGE $\frac{-b \pm \sqrt{b^{2} - 4ac}}{2a}$}
+
+No bullet
+
+\[
+    x = \frac{-b \pm \sqrt{b^{2} - 4ac}}{2a}
+\]
+
+# More stuff here
+
+
+
+\end{easylist}
+% End of note
+
+\end{document}
