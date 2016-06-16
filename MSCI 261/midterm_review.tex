@@ -35,10 +35,10 @@
 \begineasylist
 
 # \textbf{Compound interest}: $F = P(1 + i)^N$
-## $F$ = future value (value at the end of year N)
-## $P$ = present value
+## $F$ = future value (value at the \underline{end of year N})
+## $P$ = present value (value at the \underline{beginning of year 0})
 ## $i$ = interest rate (per period)
-## $N$ = number of periods
+## $N$ = number of compounding periods
 
 # \textbf{Simple interest}: $F = PN(1 + i)$
 
@@ -59,7 +59,93 @@ i_e &= \lim_{m \rightarrow \infty} \Big(1 + \frac{i_s}{m}\Big)^m - 1\\
 &= e^{i_s} -1
 \end{align*}
 
+\end{easylist}
+\subsection*{Compound Interest Factors}
+\begineasylist
 
+# Compound interest factors are just notations to represent formulas used to calculate $F$ (future value), $P$ (present value), or $A$ (annuity).
+
+# e.g. $(F/P, i, N) \rightarrow$ returns $F$, given $P$, $i$, and $N$
+
+# \textbf{Compound amount factor} = $(F/P, i , N) = (1 + i)^N$
+## Given how much a payment is worth now, how much is it worth in $N$ years?
+## $F = P(F/P, i , N)$
+
+# \textbf{Present worth factor} = $(P/F, i , N) = \dfrac{1}{(1 + i)^N}$
+## Given how much a payment will be worth in $N$ years, how much is it worth now?
+## $P = F(P/F, i , N)$
+
+\begin{figure}[!ht]
+    \centering
+    \includegraphics[width=0.8\textwidth]{pf.png}
+\end{figure}
+
+# \textbf{Sinking fund factor} = $(A/F, i, N) = \dfrac{i}{(1 + i)^N - 1}$
+## Given how much an amount should be worth in $N$ years, how much should I deposit/pay each year (i.e. \underline{annuity}) ?
+## $A = F(A/F, i, N)$
+
+# \textbf{Uniform series compound amount factor} = $(F/A, i, N) = \dfrac{(1 + i)^N - 1}{i}$
+## If I deposit/pay $A$ each year, how much will it be worth in $N$ years?
+## $F = A(F/A, i, N)$
+
+\begin{figure}[!ht]
+    \centering
+    \includegraphics[width=0.8\textwidth]{fa.png}
+\end{figure}
+
+# \textbf{Capital recovery factor} = $(A/P, i, N) = \dfrac{i(1+i)^N}{(1+i)^N - 1}$
+## Given how much a payment is worth now, how much should I deposit/pay each year in order to recover this payment in $N$ years?
+## $A = P(A/P, i, N)$
+
+# \textbf{Series present worth factor} = $(P/A, i, N) = \dfrac{(1+i)^N - 1}{i(1+i)^N}$
+## If I despoit/pay $A$ each year for $N$ years, how much is it all worth today?
+## $P = A(P/A, i, N)$
+
+\begin{figure}[!ht]
+    \centering
+    \includegraphics[width=0.8\textwidth]{pa.png}
+\end{figure}
+
+\end{easylist}
+\subsection*{Conversion Factors}
+\begineasylist
+
+# \textbf{Arithmetic gradient to annuity conversion factor} = $(A/G, i, N) = \dfrac{1}{i} - \dfrac{N}{(1 + i)^N - 1}$
+## Returns an annuity value, \textbf{not} the present worth
+## Annuity increases/decreases by an amount $G$ each year
+### Year 1: $A = A'$
+### Year 2: $A = A' + G$
+### Year 3: $A = A' + 2G$
+### Year $N$: $A = A' + (N-1)G$
+## $A_{total} = A_{base} + G(A/G, i, N)$, then $P = A_{total}(P/A, i, N)$, etc.
+
+\begin{figure}[!ht]
+    \centering
+    \includegraphics[width=0.8\textwidth]{ag.png}
+\end{figure}
+
+# \textbf{Geometric gradient to present worth conversion factor} = $(P/A, g, i, N) = \dfrac{(P/A, i^o, N)}{1+g}$
+## Annuity grows by a rate $g$ each year
+### Year 1: $A = A'$
+### Year 2: $A = A'(1 + g)$
+### Year 3: $A = A'(1 + g)^2$
+### Year $N$: $A = A'(1 + g)^{N-1}$
+## \textbf{Growth-adjusted interest rate} = $i^o = \dfrac{1+i}{1+g} - 1$
+## If $g = i > 0$, the growth rate cancels the interest rate so $i^o = 0$, and $P = \dfrac{NA}{1 + g}$
+
+\begin{figure}[!ht]
+    \centering
+    \includegraphics[width=0.8\textwidth]{pag.png}
+\end{figure}
+
+\end{easylist}
+\subsection*{Calculating Present and Future Worth}
+\begineasylist
+
+# Present worth can also be calculated as = sum of revenue $-$ cost in each year, divided by the discount in that year $(1 + i)^k$
+## $PW = -C_{initial} + \dfrac{R_1 - C_1}{(1 + i)^1} + \dfrac{R_2 - C_2}{(1 + i)^2} + \ldots + \dfrac{R_N - C_N}{(1 + i)^N}$
+
+# If payment period $\neq$ compound period for annuities, 
 
 \end{easylist}
 
