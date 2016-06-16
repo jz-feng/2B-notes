@@ -1,5 +1,8 @@
-*
-!.*
-.DS_STORE
-!*.pdf
-!*.tex
+*.aux
+*.fdb_latexmk
+*.fls
+*.log
+*.gz
+*.xlsx
+TPM/
+WKRPT/

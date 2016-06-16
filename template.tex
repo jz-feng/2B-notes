@@ -2,6 +2,7 @@
 \usepackage[margin=1in]{geometry}
 \geometry{letterpaper}
 \usepackage{amssymb}
+\usepackage[fleqn]{amsmath}
 \usepackage[sharp]{easylist}
 \usepackage{relsize}
 
@@ -9,13 +10,16 @@
 \setlength{\parindent}{0em}         % No paragraph indenting
 \setlength{\parskip}{0.5em}         % Paragraph spacing
 
+\newcommand*{\begineasylist}{\begin{easylist}[itemize]\ListProperties(Style*=$\bullet$\quad, Style2*=\tiny$\blacksquare$\quad, Style3*=$\circ$\quad, Style4*=$\diamond$\quad, FinalSpace=1em, Space=0em, Space*=0em)}
+
+\newcommand*{\begineasylistnumbered}{\begin{easylist}[enumerate]\ListProperties(Numbers=a, Space=0em, Space*=0em)}
+
 \begin{document}
 
 \section*{Title}
 
 % Beginning of note
-\begin{easylist}[itemize]
-\ListProperties(Style*=$\bullet$ , Style2*=\tiny$\blacksquare$ , Style3*=$\circ$ , Style4*=$\diamond$ )
+\begineasylist
 
 # Bullet point here
 

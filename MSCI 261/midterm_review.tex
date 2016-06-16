@@ -1,0 +1,66 @@
+\documentclass[11pt, oneside]{article}
+\usepackage[margin=1in]{geometry}
+\geometry{letterpaper}
+\usepackage{amssymb}
+\usepackage[fleqn]{amsmath}
+\usepackage[sharp]{easylist}
+\usepackage{relsize}
+\usepackage{graphicx}
+
+\pagenumbering{gobble}              % No page numbering
+\setlength{\parindent}{0em}         % No paragraph indenting
+\setlength{\parskip}{0.5em}         % Paragraph spacing
+
+\newcommand*{\begineasylist}{\begin{easylist}[itemize]\ListProperties(Style*=$\bullet$\quad, Style2*=\tiny$\blacksquare$\quad, Style3*=$\circ$\quad, Style4*=$\diamond$\quad, FinalSpace=1em, Space=0em, Space*=0em)}
+
+\newcommand*{\begineasylistnumbered}{\begin{easylist}[enumerate]\ListProperties(Numbers=a, Space=0em, Space*=0em)}
+
+\begin{document}
+
+\section*{MSCI 261 Midterm Review (Chpt. 2-5)}
+
+\subsection*{Cash Flow Diagrams}
+\begineasylist
+
+\begin{figure}[!ht]
+    \centering
+    \includegraphics[width=0.7\textwidth]{cash_flow_diagram.png}
+\end{figure}
+
+# Cash inflows and outflows are represented by arrows
+# Each ``year'' point represents the \emph{\underline{beginning}} of that year
+
+\end{easylist}
+\subsection*{Interest}
+\begineasylist
+
+# \textbf{Compound interest}: $F = P(1 + i)^N$
+## $F$ = future value (value at the end of year N)
+## $P$ = present value
+## $i$ = interest rate (per period)
+## $N$ = number of periods
+
+# \textbf{Simple interest}: $F = PN(1 + i)$
+
+# \textbf{Nominal interest rate}: $i_s$
+## ``Normal'' way of stating interest rate
+## If annual nominal rate = 12\%/year, then monthly nominal rate = 1\%/month
+# \textbf{Effective interest rate}: $i_e$
+## ``Actual'' interest rate
+## Suppose $i_s$ is stated over a ``small'' period
+## Then $i_e$ over a ``large'' period, which consists of $m$ small periods, is
+\[ i_e = (1 + i_s)^m - 1 \]
+## i.e. effective interest is the rate such that $P(1 + i_s)^m = P(1+i_e)$
+# \textbf{Converting nominal annual to effective annual rate}:
+\[ i_e = (1 + \frac{i_s}{m})^m - 1 \qquad \text{where $m$ = number of compounding periods in a year} \]
+# Continuous compounding -- compounding period is infinitesimally small
+\begin{align*}
+i_e &= \lim_{m \rightarrow \infty} \Big(1 + \frac{i_s}{m}\Big)^m - 1\\
+&= e^{i_s} -1
+\end{align*}
+
+
+
+\end{easylist}
+
+\end{document}
