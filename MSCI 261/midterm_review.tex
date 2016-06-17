@@ -147,7 +147,7 @@ i_e &= \lim_{m \rightarrow \infty} \Big(1 + \frac{i_s}{m}\Big)^m - 1\\
 
 \begin{figure}[!ht]
     \centering
-    \includegraphics[width=0.5\textwidth]{excel_formulas.png}
+    \includegraphics[width=0.6\textwidth]{excel_formulas.png}
 \end{figure}
 
 \end{easylist}
@@ -180,12 +180,43 @@ i_e &= \lim_{m \rightarrow \infty} \Big(1 + \frac{i_s}{m}\Big)^m - 1\\
 ## Present worth of a project that continues indefinitely, with \underline{infinite series of uniform cash flows} is called the \textbf{capitalized value}
 \[ P = \lim_{N \rightarrow \infty} A(P/A, i, N) = \frac{A}{i}\]
 
+
+\end{easylist}
+\subsection*{Relations Between Projects}
+\begineasylist
+
+# \textbf{Independent}: costs and benefits of each project is not affected by whether any other project is chosen; any projects (or none) can be chosen
+
+# \textbf{Mutually exclusive}: choosing one project excludes all other projects from being chosen; only \underline{one of many projects} can be chosen
+
+# \textbf{Related but not mutually exclusive}: costs and benefits of a project depends on another project, but both can also be chosen
+## Put projects into mutually exclusive sets
+## $n$ projects can be put into $2^n$ sets
+## Example: need to pick a number of projects with various costs, given a total budget
+### Evaluate all combinations of projects, and those combinations' present worths and costs
+### Find the combination of projects that has the highest PW, while satisfying the budget
+
+
+
 \end{easylist}
 \subsection*{Comparison Methods}
 \begineasylist
 
-# 
+# \textbf{Minimum acceptable rate of return (MARR)}:
+## Rate of return required for investing in a project to be acceptable
+### ``The investment should return \emph{at least} this much''
+### i.e. investing in a project that returns at less than MARR is deemed undesirable, since the money could be invested elsewhere with higher returns
+## When doing comparisons, MARR is used as the interest rate
 
+# \textbf{Present/future worth comparison}
+
+## For independent projects, choose all with $PW \geq 0$
+## For mutually exclusive projects, choose the one with highest $PW$
+
+# \textbf{Annual worth comparison}
+
+## Convert all cash flows to annual worth
+## Useful when many cash flows are given as annuities
 
 
 \end{easylist}
