@@ -210,6 +210,7 @@ i_e &= \lim_{m \rightarrow \infty} \Big(1 + \frac{i_s}{m}\Big)^m - 1\\
 
 # \textbf{Present/future worth comparison}
 
+## Calculate PW or FW for all cash flows for each project, and compare
 ## For independent projects, choose all with $PW \geq 0$
 ## For mutually exclusive projects, choose the one with highest $PW$
 
@@ -218,6 +219,36 @@ i_e &= \lim_{m \rightarrow \infty} \Big(1 + \frac{i_s}{m}\Big)^m - 1\\
 ## Convert all cash flows to annual worth
 ## Useful when many cash flows are given as annuities
 
+# Comparing projects with different timespans
+
+## \textbf{Note}: no special techniques are required when comparing using the AW method
+
+## \textbf{Repeated lives}: repeat the ``service life'' of each alternative so that the timespans under consideration are equal
+### i.e. find the \underline{least common multiple} of the service lives
+
+## \textbf{Study period}: choose a period over which the alternatives' PWs will be compared
+### If the period $<$ the lifespan of an alternative, its salvage value at that time must be assumed
+
+# \textbf{Payback period}
+
+## $\dfrac{\text{First cost}}{\text{Annual return}} =$ the \# of years for an investment to be recovered, assuming $i = 0$
+## For non-constant annual returns, deduct each year's savings one year at a time until the first cost has been returned completely
+## Shorter payback period is preferred
+
+# \textbf{Internal rate of return}
+
+## IRR = interest rate at which the project \underline{breaks even}
+## i.e. IRR is $i^*$ such that
+\[ \sum_{t=0}^{N} \dfrac{R_t - D_t}{(1 + i^*)^t} = 0 \qquad \text{where $R_t =$ receipts in year $t$ and $D_t =$ disbursements in year $t$} \]
+
+## $i^*$ can be solved by setting $PW(receipts) = PW(disbursements)$, or similarly using $FW$ or $AW$
+### Without spreadsheets, $i^*$ can be estimated by trial and error, then determined through linear interpolation
+
+## For independent projects, choose all projects with IRR $\geq$ MARR
+
+# \textbf{External rate of return}
+
+## 
 
 \end{easylist}
 
