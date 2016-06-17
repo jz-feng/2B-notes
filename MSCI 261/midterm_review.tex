@@ -255,14 +255,36 @@ i_e &= \lim_{m \rightarrow \infty} \Big(1 + \frac{i_s}{m}\Big)^m - 1\\
 ### First find $i^*$ for all alternatives; eliminate those that are $<$ MARR
 ### Begin with the alternative with the \emph{lowest first cost} as the \emph{current best}
 ### Compare \emph{current best} with the alternative with the \emph{next lowest first cost}
-#### Evaluate the IRR of their \underline{increment}
+#### Evaluate the IRR of their \underline{increment} (receipts and disbursements of A -- B)
 #### If IRR $<$ MARR, current best does not change
 #### If IRR $\geq$ MARR, the new alternative becomes the current best
 ### Go through all alternatives from lowest to highest first cost; then the \emph{current best} returns the best alternative 
 
+## Ex: Alternatives A, B, C are ordered from lowest to highest first cost
+### \emph{Current best} begins as alternative A
+### Solve for $i^*$ using \\
+$PW(disbursement(B) - disbursement(A)) = PW(receipts(B) - receipts(A))$\\
+i.e. the \emph{increment} from A to B
+### If $i^* \geq $ MARR, B becomes \emph{current best}
+### Solve for $i^*$ for C -- B, etc \ldots
+
+# \textbf{Multiple IRRs}
+
+## \textbf{Descartes' Rule of Signs}: the \# of \underline{positive} solutions in $a_0 + a_1x + a_2x^2 + \ldots + a_nx^n = 0$ is \emph{less than or equal to} the \# of sign changes in the coefficients
+
+## This also corresponds to the sign changes in net cash flow of each year
+
 # \textbf{External rate of return}
 
-## 
+## Use ERR ($i^*_e$) instead when there are multiple IRRs
+## i.e. return earned by cash flow that's not invested into the project
+## Assumed to be invested at MARR
+## Calculating \textbf{approximate ERR}:
+### Take all \underline{positive net} cash flows (net receipts) forward to the final year, at MARR (i.e. take F/P or F/A)
+### Take all \underline{negative net} cash flows (net disbursements) forward also to the final year, at an unkown $i^*_e$
+### This produces the \emph{transformed series}
+### Find the IRR of the transformed series; i.e. set $FW(disbursements)_{i^*_e} = FW(receipts)_{MARR}$, solve for $i^*_e$
+## The project is deemed acceptable if ERR $\geq$ MARR
 
 \end{easylist}
 
