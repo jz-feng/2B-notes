@@ -82,6 +82,7 @@ i_e &= \lim_{m \rightarrow \infty} \Big(1 + \frac{i_s}{m}\Big)^m - 1\\
 ## Given how much a payment will be worth in $N$ years, how much is it worth now?
 \[ P = F(P/F, i , N) \]
 
+\newpage
 \begin{figure}[!ht]
     \centering
     \includegraphics[width=0.7\textwidth]{pf.png}
@@ -108,9 +109,15 @@ i_e &= \lim_{m \rightarrow \infty} \Big(1 + \frac{i_s}{m}\Big)^m - 1\\
 ## If I despoit/pay $A$ each year for $N$ years, how much is it all worth today?
 \[ P = A(P/A, i, N) \]
 
+\newpage
 \begin{figure}[!ht]
     \centering
     \includegraphics[width=0.7\textwidth]{pa.png}
+\end{figure}
+
+\begin{figure}[!ht]
+    \centering
+    \includegraphics[width=0.6\textwidth]{excel_formulas.png}
 \end{figure}
 
 \end{easylist}
@@ -145,13 +152,7 @@ i_e &= \lim_{m \rightarrow \infty} \Big(1 + \frac{i_s}{m}\Big)^m - 1\\
     \includegraphics[width=0.8\textwidth]{pag.png}
 \end{figure}
 
-\begin{figure}[!ht]
-    \centering
-    \includegraphics[width=0.6\textwidth]{excel_formulas.png}
-\end{figure}
-
 \end{easylist}
-\newpage
 \subsection*{Calculating Present and Future Worth}
 \begineasylist
 
@@ -232,7 +233,9 @@ i_e &= \lim_{m \rightarrow \infty} \Big(1 + \frac{i_s}{m}\Big)^m - 1\\
 # \textbf{Payback period}
 
 ## $\dfrac{\text{First cost}}{\text{Annual return}} =$ the \# of years for an investment to be recovered, assuming $i = 0$
-## For non-constant annual returns, deduct each year's savings one year at a time until the first cost has been returned completely
+## For non-constant annual returns, deduct each year's savings from the first cost one year at a time until the cost has been returned completely
+### e.g. First cost = \$100k; annual savings = \$10k, \$12k, \$14k \ldots
+### Year 1: \$100k -- \$10k = \$90k; Year 2: \$90k -- \$12k = \$78k \ldots continue until \$0
 ## Shorter payback period is preferred
 
 # \textbf{Internal rate of return}
@@ -245,6 +248,17 @@ i_e &= \lim_{m \rightarrow \infty} \Big(1 + \frac{i_s}{m}\Big)^m - 1\\
 ### Without spreadsheets, $i^*$ can be estimated by trial and error, then determined through linear interpolation
 
 ## For independent projects, choose all projects with IRR $\geq$ MARR
+
+## For mutually exclusive projects:
+
+### Having the highest IRR does not necessarily indicate being the best alternative
+### First find $i^*$ for all alternatives; eliminate those that are $<$ MARR
+### Begin with the alternative with the \emph{lowest first cost} as the \emph{current best}
+### Compare \emph{current best} with the alternative with the \emph{next lowest first cost}
+#### Evaluate the IRR of their \underline{increment}
+#### If IRR $<$ MARR, current best does not change
+#### If IRR $\geq$ MARR, the new alternative becomes the current best
+### Go through all alternatives from lowest to highest first cost; then the \emph{current best} returns the best alternative 
 
 # \textbf{External rate of return}
 
