@@ -143,6 +143,9 @@ T(n) &= T(\lceil \frac{n}{2} \rceil) + T(\lfloor \frac{n}{2} \rfloor) + \Theta(n
 ## \textbf{Expected runtime} = $T^{exp} (I) = \sum_R T(I, R) \times P(R)$
 ## For quickselect and quicksort, randomizing the pivot makes the expected time = average time
 
+## \textbf{Monte Carlo algorithm}: always fast, not always correct
+## \textbf{Las Vegas algorithm}: always correct, not always fast
+
 # \textbf{Comparison model}: 
 ## Data can only be accessed by:
 ### Comparing two elements
@@ -155,15 +158,65 @@ T(n) &= T(\lceil \frac{n}{2} \rceil) + T(\lfloor \frac{n}{2} \rfloor) + \Theta(n
 # \textbf{Countsort}: input is array of size $n$ which only contain numbers in a consecutive key set of $k$ elements
 ## Count the \# of occurrences of each element (i.e. a histogram)
 ## Calculate where each first key in key set 
-## $\in \Theta(n + k)$
+## $\in \Theta(n + k) \in \Theta(n)$ if $k \in O(n)$
 
 # \textbf{Radix sort}: represent all elements in base $r$ (radix)
-## Pad with leading 0s so all elements have the same \# of digits
-## Sort elements into \underline{buckets} based on their most/least significant digit
+## Pad with leading 0s so all elements have $m$ digits
+## Sort elements into \underline{buckets} (using count sort) based on their most/least significant digit
 ## Make subsequent passes through every digit ($r$ digits)
-## $\in \Theta(nr) \in \Theta(n)$ 
+## $\in \Theta(m(n+r)) \in \Theta(n)$ if $m, r \in O(n)$
 
 # A sorting algorithm is \underline{stable} if the order of equal (tied) keys are preserved (from the original order in the input)
+
+
+\end{easylist}
+\subsection*{Balanced Search Trees}
+\begineasylist
+
+# \textbf{Binary search tree}
+## A node's left subtree all have key values less than the root node
+## A node's right subtree all have key values greater than the root node
+## Search: start with root, binary search = $\Theta(\log n)$
+## Insert: search for closest existing node, insert as new leaf = $\Theta(\log n)$
+## Delete = $\Theta(\log n)$
+### If is leaf, just delete
+### If has one child, replace with child
+### If has two children, swap with \emph{predecessor} or \emph{successor} then delete
+## Worse-case height = $\Theta(n)$
+
+# \textbf{AVL tree}
+## \textbf{Balance} of each node = height(right subtree) -- height(left subtree)
+## Height of empty subtree = --1
+## If $|$balance$|$ $>$ 1, tree is out of balance
+## \textbf{Right/left rotation}: when node balance = $\pm2$ and a child has balance = $\pm1$ of the same sign
+## \textbf{Double right/left rotation}: when node balance = $\pm2$ and a child has balance = $\pm1$ of the opposite sign
+## Rotations are $\Theta(1)$
+## Insert \& delete normally as in BSTs, update balances from bottom up and rotate if any subtree is out of balance
+## \# of nodes in a subtree of a given height is at least = $N(h) = 1 + N(h-1) + N(h-2) \geq 2N(h-2)$
+### From this recurrence we get $N(h) \geq 2^{\lfloor h/2 \rfloor}$ or $h \in O(\log n)$
+## \# of nodes is also at most $N(h) = 2^{h+1} - 1$, or $h \in \Omega(\log n)$
+## Therefore the height of an AVL tree is $\Theta(\log n)$
+
+\end{easylist}
+\subsection*{Dictionaries}
+\begineasylist
+
+# \textbf{Dictionary}: a collection of \textbf{key-value pairs} (KVP)
+# \textbf{Optimal static ordering}: elements are stored in decreasing order by probability of access
+## Given $L$ of $n$ elements, expected access cost is $E(L) = \sum_{i=1}^n P(x_i)T(x_i) = \sum_{i=1}^n P(x_i)i$
+## If $P$ is uniform then $E(L) = \sum_{i=1}^n \dfrac{i}{n} \in \Theta(n)$
+
+# \textbf{Dynamic ordering}: 
+## Move-to-front (MTF): move searched item to the front of list
+## Transpose: swap searched item with item preceding it
+
+# \textbf{Skip list}:
+## A series of lists $S_0 \ldots S_h$ containing keys in increasing order
+### Each starts and ends special keys $-\infty$ and $+\infty$
+### $S_h \subseteq S_h-1 \subseteq \ldots \subseteq S_0 $
+## Height at which new elements are inserted is $i$ = \# of heads flipped before a tail
+### $P = (1/2)^i$
+## Expected height = $O(\log n)$
 
 
 \end{easylist}
