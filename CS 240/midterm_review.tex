@@ -82,10 +82,42 @@ T(n) &= T(\lceil \frac{n}{2} \rceil) + T(\lfloor \frac{n}{2} \rfloor) + \Theta(n
 ## \textbf{In general}, $\{T(n) = T(n/2) + c\} \in \Theta(n \log n)$
 
 \end{easylist}
-\subsection*{Priorty Queues}
+\subsection*{Priorty Queues and Heaps}
 \begineasylist
 
-#
+# \textbf{Priority queue}: an \textbf{abstract data type} containing a collection of items each with a priority
+
+# \textbf{Heap}: binary tree with 2 structures
+## Structural property: all levels of filled except the lowest, which is left-justified
+## Ordering property: the parent of any node has greater value than the node itself
+
+# The height of a heap with $n$ nodes is $\Theta(\log n)$
+## Since $2^k \leq n$ (\# of nodes on all levels above) and $n \geq 2^{k+1} - 1$ (\# of nodes including this level)
+
+# \textbf{Bubble-up algorithm}: used for heap \underline{insertion}
+## If node.key $>$ node.parent.key then swap
+## Brings a large value from a leaf node up
+
+# \textbf{Bubble-down algorithm}: used for heap \underline{deletion}
+## If node.key $<$ node.largest\_child.key then swap
+## Brings a small node from the root down
+
+# Heapify with bubble-up: insert each item, total runtime = $\Theta(n \log n)$
+
+# Heapify with bubble-down (given an unordered array): since leaf nodes can't bubble-down, start bubbling down from second-last level ($n/2$ nodes)
+## Total runtime = $\Theta(n)$
+
+
+\end{easylist}
+\subsection*{Sorting and Randomized Algorithms}
+\begineasylist
+
+
+
+
+
+
+
 
 \end{easylist}
 
