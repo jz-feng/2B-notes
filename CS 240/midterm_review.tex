@@ -92,31 +92,78 @@ T(n) &= T(\lceil \frac{n}{2} \rceil) + T(\lfloor \frac{n}{2} \rfloor) + \Theta(n
 ## Ordering property: the parent of any node has greater value than the node itself
 
 # The height of a heap with $n$ nodes is $\Theta(\log n)$
-## Since $2^k \leq n$ (\# of nodes on all levels above) and $n \geq 2^{k+1} - 1$ (\# of nodes including this level)
+## Since $2^k \leq n$ (\# of nodes on all levels above) and $n \leq 2^{k+1} - 1$ (\# of nodes including this level)
 
 # \textbf{Bubble-up algorithm}: used for heap \underline{insertion}
 ## If node.key $>$ node.parent.key then swap
-## Brings a large value from a leaf node up
+## Brings a \underline{large} value from a leaf node \underline{up}
 
 # \textbf{Bubble-down algorithm}: used for heap \underline{deletion}
 ## If node.key $<$ node.largest\_child.key then swap
-## Brings a small node from the root down
+## Brings a \underline{small} value from the root node \underline{down}
 
 # Heapify with bubble-up: insert each item, total runtime = $\Theta(n \log n)$
 
-# Heapify with bubble-down (given an unordered array): since leaf nodes can't bubble-down, start bubbling down from second-last level ($n/2$ nodes)
+# Heapify with bubble-down (given an unordered array): since leaf nodes can't bubble-down, start bubbling down from second-last level up ($n/2$ nodes)
 ## Total runtime = $\Theta(n)$
 
 
 \end{easylist}
-\subsection*{Sorting and Randomized Algorithms}
+\subsection*{Sorting, Selection, Randomized Algorithms}
 \begineasylist
 
+# Every problem has an intrinsic cost/problem complexity = $C(n)$
+# If a problem has complexity $\Omega(C(n))$, and an algorithm has worst-case runtime $O(C(n))$, then the algorithm is \underline{optimal}
 
+# \textbf{Selection problem}: find the $k$-th largest element within $n$ elements
+## Using sorted array = $\Theta(n \log n)$
+## Using heap: heapify, then remove max from heap $k$ times = $\Theta(n + k \log n)$
+## Using quick-select = $\Theta(n)$
 
+# \textbf{Quickselect}:
+## Choose pivot = $\Theta(1)$
+## Partition:
+### Go from outermost pair inwards, swap any pairs that are in the wrong order
+### i.e. $++i$ and $--j$ until $A[i] > pivot$ and $A[j] < pivot$, then swap $i$ and $j$
+### Return index pivot; array is now partitioned by the pivot value
+### $\Theta(n)$
+## Recursively call partition on one of the two partitions, until pivot index = desired index
 
+## Worse case: every recursive call paritions off 1 element =  $\Theta(n^2)$
+## Best case: desired element is returned on first call = $\Theta(n)$
+## Average case: $\sum$ all runtimes for all permutations of the array / \# of permutations ($n!$)
 
+# \textbf{Quicksort}:
+## Same as quickselect, except recurse on both partitions instead of just one
+## Worse case = $\Theta(n^2)$
+## Best case = average case = $\Theta(n \log n)$
 
+# \textbf{Randomized algorithm}: algorithm whose output depends on the input as well as some random numbers
+## $T(I, R) = $ runtime given input $I$ and set of random numbers $R$
+## \textbf{Expected runtime} = $T^{exp} (I) = \sum_R T(I, R) \times P(R)$
+## For quickselect and quicksort, randomizing the pivot makes the expected time = average time
+
+# \textbf{Comparison model}: 
+## Data can only be accessed by:
+### Comparing two elements
+### Moving elements around
+
+## \textbf{Theorem}: any correct comparison-based sorting algorithm is $\Omega(n \log n)$ (at least $n \log n$)
+
+# Non-comparison based sorts can achieve faster than $\Omega(n \log n)$
+
+# \textbf{Countsort}: input is array of size $n$ which only contain numbers in a consecutive key set of $k$ elements
+## Count the \# of occurrences of each element (i.e. a histogram)
+## Calculate where each first key in key set 
+## $\in \Theta(n + k)$
+
+# \textbf{Radix sort}: represent all elements in base $r$ (radix)
+## Pad with leading 0s so all elements have the same \# of digits
+## Sort elements into \underline{buckets} based on their most/least significant digit
+## Make subsequent passes through every digit ($r$ digits)
+## $\in \Theta(nr) \in \Theta(n)$ 
+
+# A sorting algorithm is \underline{stable} if the order of equal (tied) keys are preserved (from the original order in the input)
 
 
 \end{easylist}
