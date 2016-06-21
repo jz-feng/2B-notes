@@ -37,30 +37,52 @@
 # Order notations
 ## \underline{$f(n) \in O(g(n))$} if $\exists \ c > 0$ and $n_0 > 0$ such that $0 \leq f(n) \leq cg(n) \ \forall \ n \geq n_0$
 ### $f$ ``grows no faster than'' $g$
-### $f$ is ``upper-bounded'' by $g$
+### $f$ is ``upper-bounded'' by $g$ ($\leq$)
 
 ## \underline{$f(n) \in \Omega(g(n))$} if $\exists \ c > 0$ and $n_0 > 0$ such that $0 \leq cg(n) \leq f(n) \ \forall \ n \geq n_0$
 ### $f$ ``grows no slower than'' $g$
-### $f$ is ``lower-bounded'' by $g$
+### $f$ is ``lower-bounded'' by $g$ ($\geq$)
 
 ## \underline{$f(n) \in \Theta(g(n))$} if $\exists \ c_1, c_2 > 0$ and $n_0 > 0$ such that $0 \leq c_1g(n) \leq f(n) \leq c_2g(n) \ \forall \ n \geq n_0$
 ### $f$ and $g$ grow at the same rate
 
 ## \underline{$f(n) \in o(g(n))$} if $\forall \ c > 0, \exists \ n_0 > 0$ such that $0 \leq f(n) < cg(n) \ \forall \ n \geq n_0$
-### $f$ \emph{always} grows slower than $g$, given a $n_0$
+### $f$ is ``\emph{strictly} upper-bounded'' by $g$ ($<$)
 
 ## \underline{$f(n) \in \omega(g(n))$} if $\forall \ c > 0, \exists \ n_0 > 0$ such that $0 \leq cg(n) < f(n) \ \forall \ n \geq n_0$  
-### $f$ \emph{always} grows faster than $g$, given a $n_0$
+### $f$ is ``\emph{strictly} lower-bounded'' by $g$ ($>$)
 
 ## Suppose $L = \lim_{n \rightarrow \infty} \dfrac{f(n)}{g(n)}$
 ### If $L = 0$ then $f \in o(g)$
 ### If $0 < L < \infty$ then $f \in \Theta(g)$
 ### If $L = \infty$ then $f \in \omega(g)$
 
+## If $f \in O(g)$ and $f \in \Omega(g)$, then $f \in \Theta(g)$
 
+# Loop analysis
+## Begin from the innermost nested loop; use $\sum$ for each outer loop
+
+# Recurrence relations analysis
+## e.g. mergesort:
+## Step 1: split array of length $n$ into two subarrays, of lengths $\lceil \frac{n}{2} \rceil$ and $\lfloor \frac{n}{2} \rfloor$ ($T = \Theta(n)$)
+## Step 2: recursively run mergesort on subarrays ($T = T(\lceil \frac{n}{2} \rceil) + T(\lfloor \frac{n}{2} \rfloor)$)
+## Step 3: merge sorted subarrays into a single sorted array ($T = \Theta(n)$)
+## Thus the \underline{recurrence relation} is
+\begin{align*}
+T(n) &= \Theta(1) &\text{ if } n = 1\\
+T(n) &= T(\lceil \frac{n}{2} \rceil) + T(\lfloor \frac{n}{2} \rfloor) + \Theta(n) &\text{ if } n > 1\\
+&= 2T(\frac{n}{2}) + cn\\
+&= 2(2T(\frac{n}{4}) + \frac{cn}{2}) + cn\\
+&= \ldots\\
+&= 2^kT(\frac{n}{2^k}) + kcn &\text{where } k = \log n\\
+&= nT(1) + \log n (cn)\\
+&\in \Theta(n \log n)
+\end{align*}
+
+## \textbf{In general}, $\{T(n) = T(n/2) + c\} \in \Theta(n \log n)$
 
 \end{easylist}
-\subsection*{Thing}
+\subsection*{Priorty Queues}
 \begineasylist
 
 #
