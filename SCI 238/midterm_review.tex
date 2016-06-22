@@ -1,0 +1,64 @@
+\documentclass[11pt, oneside]{article}
+\usepackage[margin=1in]{geometry}
+\geometry{letterpaper}
+\usepackage{amssymb}
+\usepackage[fleqn]{amsmath}
+\usepackage[sharp]{easylist}
+\usepackage{relsize}
+
+\pagenumbering{gobble}              % No page numbering
+\setlength{\parindent}{0em}         % No paragraph indenting
+\setlength{\parskip}{0.5em}         % Paragraph spacing
+
+\newcommand*{\begineasylist}{\begin{easylist}[itemize]\ListProperties(Style*=$\bullet$\quad, Style2*=\tiny$\blacksquare$\quad, Style3*=$\circ$\quad, Style4*=$\diamond$\quad, FinalSpace=1em, Space=0em, Space*=0em)}
+
+\newcommand*{\begineasylistnumbered}{\begin{easylist}[enumerate]\ListProperties(Numbers=a, Space=0em, Space*=0em)}
+
+\begin{document}
+
+\section*{SCI 238 Midterm Review (Chpt. 1--11)}
+
+\subsection*{The Sky}
+\begineasylist
+
+# \textbf{Celestial sphere}: coordinates and positions are relative to Earth's surface and rotation
+## \textbf{Celestial equator} = Earth's equator mapped to the sky
+## \textbf{Celestial poles} = Earth's poles
+## \textbf{Right ascension} = longitude lines, measured w.r.t. vernal equinox
+## \textbf{Declination} = latitude lines, measured w.r.t. celestial equator
+
+# \textbf{Ecliptic} = plane of Earth's revolution around the sun
+
+# \textbf{Vernal equinox} = point where the sun (ecliptic) crosses the celestial equator from south to north
+
+# \textbf{Meridian} = latitudinal line directly above a given point on the surface of Earth
+## \textbf{Solar noon} = when the sun is along the meridian at the current location
+### a.k.a. 12:00 \textbf{apparent solar time}
+
+# \textbf{Zenith} = directly overhead
+## Sun is at the zenith when observed at the equator, during equinoxes
+## Sun is at the zenith when observed at Tropic of Cancer/Capricorn, during solstices
+
+\end{easylist}
+\subsection*{Kepler's Laws}
+\begineasylist
+
+# First Law: if $a$ = semi-major axis, $e$ = eccentricity then
+## Perihelion distance = $a(1 - e)$
+## Aphelion distance = $a(1 + e)$
+
+# Second Law: planets' revolution around the sun cover the same area in equal time
+
+# Third Law: (orbital period)$^2$ = (semi-major axis)$^3$
+## $P^2 [years] = a^3 [AU]$
+
+# Newton's version of the Third Law:
+\[ p^2 = \frac{4\pi^2}{G(M_1 + M_2)}a^3 \]
+## Usually used to find \underline{mass of main body}, given \underline{orbital period} and \underline{orbiting distance} of orbiting body
+
+# Distances from 2 bodies to their common centre of mass (another Newton extension) = $m_1a_1 = m_2a_2$
+
+
+\end{easylist}
+
+\end{document}
