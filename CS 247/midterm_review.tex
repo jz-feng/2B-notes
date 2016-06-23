@@ -48,6 +48,7 @@
 
 
 \end{easylist}
+\newpage
 \subsection*{UML}
 \begineasylist
 
@@ -72,11 +73,13 @@
 
 # Aggregate: a \underline{collection} of \underline{members}
 ## Collection has many members
-## Member can belong to many collections
+## Member can belong to many collections, or exist independently
+## Collection is \underline{not responsible} for its members
 
 # Composition: a stricter collection of members
 ## Member cannot exist without its collection
 ## Member belongs to exactly one collection
+## Collection is \underline{responsible} for its members
 
 # Generalization = inheritance
 
@@ -155,10 +158,50 @@
     \includegraphics[width=0.6\textwidth]{res/observer.png}
 \end{figure}
 
+# \textbf{MVC pattern}
+## UI code is abstracted into the \textbf{view}
+### Composite pattern: all view elements use the same base class (uniform interfaec)
+
+## \textbf{Controller} translates user input (from the view) into operations on the model
+### Strategy pattern: controller provides the view with a strategy; controller behaviour can be changed by swapping for a different strategy
+
+## \textbf{Model} holds data, state, and application logic
+### Observer pattern: model = subject; views = observers; model sends out notification on state change, triggering views to update accordingly
+
 \end{easylist}
 \newpage
 \subsection*{OOP Principles}
 \begineasylist
+
+# \textbf{Open Closed Principle}
+## Modules should be \underline{open} for extension but \underline{closed} for modification
+## ``Program to an interface, not an implementation''
+## e.g. provide an abstract base class (may have default implementation) that can be extended by the client
+
+# \textbf{Composition Over Inheritance}
+## Composition = include base class in new subclass as a complex attribute
+### i.e. ``has-a'' instead of ``is-a''
+## Choose inheritance when subtyping/polymorphism, or when base class's entire interface is required
+## Choose composition for non-overriding reuse because the base component can be changed at runtime
+## Composite object can \underline{delegate} operations to component objects
+
+# \textbf{Single-Responsibility Principle}
+## Each changeable design decision should be encapsulated in a module
+
+# \textbf{Liskov Substitutability Principle}
+## A derived class must be substitutable for its base class
+### Must accept the same messages (method signatures match the base class)
+### Derived methods must \underline{require no more} (weaker or same preconditions) and \underline{promise no less} (stronger or same postconditions) than base class methods
+### Derived class must preserve properties of base class (e.g. invariant, performance)
+
+# \textbf{Law of Demeter}
+## An object should only ``talk to its neighbours''
+## A method \texttt{C::m()} can only call methods of:
+### C
+### C's members
+### m's parameters
+### Any object constructed by A's methods
+## Prevents calling a chain of methods to perform an operation/retrieve information
 
 
 \end{easylist}
