@@ -27,24 +27,78 @@
 
 
 \end{easylist}
+\newpage
 \subsection*{Documentation}
 \begineasylist
 
+# \textbf{Interface specification}
+## Provides expectations about a module's operation/behaviour
+## \textbf{Specification fields}: client's view of the object's fields (including private members)
+## \textbf{Requires}: preconditions
+### Can throw exception immediately if preconditions are not satisfied
+## \textbf{Modifies}: objects/members that are changed
+## \textbf{Ensures}: effects on the changed objects/members
+### e.g. \texttt{// this = this@pre + next}
+## \textbf{Throws}: exceptions that may be thrown, and their conditions
+## \textbf{Returns}: return value \& type
+## Preconditions $\implies$ postconditions
+## Spec A is \underline{stronger} than spec B (i.e. A $\implies$ B) if \& only if:
+### A's preconditions are equal or weaker than B
+### A's postconditions are equal or stronger than B
+### A modifies equal or more objects than B
+### A throws equal or fewer exceptions than B
+
+# \textbf{Representation invariant}
+## A predicate in an ADT that must be \underline{true at all times}
+## e.g. structural invariants
+### Two tree nodes cannot share the same child node
+### Trees cannot have cycles
+## e.g. value invariants
+### No duplicate data elements
+### A value cannot be null
+## Should be checked on exit of constructor, and on entry \& exit of accessors and mutators
+
+# \textbf{Abstraction function}
+## Maps \underline{concrete values} to \underline{abstract values} in an ADT
 
 
 
 \end{easylist}
-\subsection*{Exceptions}
+\newpage
+\subsection*{Exceptions \& Smart Pointers}
 \begineasylist
 
+# \textbf{Assertion}: use to check a certain condition
+## Terminates program immediately
+## Should not have side effects, program state needs to be preserved as it was when it terminated
+## Use to report \underline{programming errors}
 
+# \textbf{Exception}:
+## Object representing an error that can be \underline{thrown} and \underline{caught}
+## Usually extend \texttt{std::exception}
+## The call stack is popped/unwinded down to the nearest matching \texttt{catch} block
+### Destructors of all stack objects are called
+#### i.e. heap objects are handled properly if they are deleted in a stack object's destructor
+
+# \textbf{Smart pointer}: object that acts like a pointer (encapsulated pointer)
+## Object itself is stack-based; holds reference (points) to a heap-based object
+## Heap object is deleted in pointer object's destructor
+## So if exception is raised, heap object is deleted by the pointer's destructor
+## \texttt{unique\_ptr<T>}: exclusive ownership of the heap object it points to (\underline{referent}); ownership can be transferred
+## \texttt{shared\_ptr<T>}: shared ownership of referent
+### Object is deleted when the \# of \texttt{shared\_ptrs} pointing to it reaches 0
+## \texttt{weak\_ptr<T>}: same as \texttt{shared\_ptr}, but doesn't contribute to reference count
+### Need to check if expired, and then convert into \texttt{shared\_ptr} before dereferencing
 
 
 \end{easylist}
 \subsection*{RAII Idiom}
 \begineasylist
 
-
+# \textbf{Resource Acquisition is Initialization}: resource management is coupled with lifetime of object
+## Allocate resource in constructor; deallocate resource in destructor
+## \texttt{Class (param) : res\_( allocate (param); ) \{ \}}
+## \texttt{$\sim$Class() \{ release (res\_); \}}
 
 
 \end{easylist}
@@ -181,12 +235,13 @@
 # \textbf{Composition Over Inheritance}
 ## Composition = include base class in new subclass as a complex attribute
 ### i.e. ``has-a'' instead of ``is-a''
-## Choose inheritance when subtyping/polymorphism, or when base class's entire interface is required
-## Choose composition for non-overriding reuse because the base component can be changed at runtime
+## Choose inheritance when subtyping, or when base class's original interface is required
+## Choose composition for non-overriding extension or when new required interface is different from original, because the base component can be changed at runtime
 ## Composite object can \underline{delegate} operations to component objects
 
 # \textbf{Single-Responsibility Principle}
 ## Each changeable design decision should be encapsulated in a module
+## Each module should only have one axis of change
 
 # \textbf{Liskov Substitutability Principle}
 ## A derived class must be substitutable for its base class
