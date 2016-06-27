@@ -1,0 +1,62 @@
+\documentclass[11pt, oneside]{article}
+\usepackage[margin=1in]{geometry}
+\geometry{letterpaper}
+\usepackage{amssymb}
+\usepackage[fleqn]{amsmath}
+\usepackage[sharp]{easylist}
+\usepackage{relsize}
+
+\pagenumbering{gobble}              % No page numbering
+\setlength{\parindent}{0em}         % No paragraph indenting
+\setlength{\parskip}{0.5em}         % Paragraph spacing
+
+\newcommand*{\begineasylist}{\begin{easylist}[itemize]\ListProperties(Style*=$\bullet$\quad, Style2*=\tiny$\blacksquare$\quad, Style3*=$\circ$\quad, Style4*=$\diamond$\quad, FinalSpace=1em, Space=0em, Space*=0em)}
+
+\newcommand*{\begineasylistnumbered}{\begin{easylist}[enumerate]\ListProperties(Numbers=a, Space=0em, Space*=0em)}
+
+\begin{document}
+
+\section*{MATH 213 (Important Results)}
+
+\subsection*{Separable ODE}
+\begineasylist
+
+# \textbf{Goal}: separate functions and derivatives of $x$ and $y$ to either side of the equation
+\begin{align*}
+f(x) &= g(y)y'\\
+\implies \int f(x)dx &= \int g(y)dy \qquad \text{then integrate both sides as normal}
+\end{align*}
+
+\end{easylist}
+\subsection*{Exact ODE}
+\begineasylist
+\begin{align*}
+M(x,y)dx + N(x,y)dy &= 0\\
+&= du \quad \text{where $u$ is some function of $x$ and $y$}
+\end{align*}
+# \textbf{Goal}: find function $u(x,y) = C$ (aka. an implicit solution of $y$)
+# The equation is \textbf{exact} if \& only if $\dfrac{\partial M}{\partial y} = \dfrac{\partial N}{\partial x}$
+\begin{align*}
+u &= \int Mdx + k(y)\\
+\text{then} \quad N &= \frac{\partial u}{\partial y}\\
+& = \frac{\partial}{\partial y} \int Mdx + \frac{d}{dy}k(y) \quad \text{to solve for $k(y)$}
+\end{align*}
+
+
+\end{easylist}
+\subsection*{First-Order Linear ODE (With Variable Coefficients)}
+\begineasylist
+
+# \textbf{Homogeneous}: $y' + p(x)y = 0$
+\[ y(x) = Ce^{-h}, \quad h = \int p(x)dx \]
+
+# \textbf{Nonhomogeneous}: $y' + p(x)y = q(x)$
+\[ y(x) = e^{-h}(\int e^hq(x)dx + C), \quad h = \int p(x)dx \]
+
+\end{easylist}
+\subsection*{}
+\begineasylist
+
+\end{easylist}
+
+\end{document}
