@@ -38,10 +38,18 @@ M(x,y)dx + N(x,y)dy &= 0\\
 # The equation is \textbf{exact} if \& only if $\dfrac{\partial M}{\partial y} = \dfrac{\partial N}{\partial x}$
 \begin{align*}
 u &= \int Mdx + k(y)\\
-\text{then} \quad N &= \frac{\partial u}{\partial y}\\
-& = \frac{\partial}{\partial y} \int Mdx + \frac{d}{dy}k(y) \quad \text{to solve for $k(y)$}
+\text{then set} \quad N &= \frac{\partial u}{\partial y} \quad \text{to solve for $k(y)$}
 \end{align*}
 
+# Alternatively,
+\begin{align*}
+u &= \int Ndy + k(x)\\
+\text{then set} \quad M &= \frac{\partial u}{\partial x} \quad \text{to solve for $k(x)$}
+\end{align*}
+
+# If equation is \textbf{not exact}, find the \textbf{integrating factor} $\mu$ such that:
+\[ \frac{\partial}{\partial y} \mu M = \frac{\partial}{\partial x} \mu N \]
+\[ \text{then solve as} \quad \mu M(x,y)dx + \mu N(x,y)dy = 0 \]
 
 \end{easylist}
 \subsection*{First-Order Linear ODE (With Variable Coefficients)}
@@ -54,8 +62,100 @@ u &= \int Mdx + k(y)\\
 \[ y(x) = e^{-h}(\int e^hq(x)dx + C), \quad h = \int p(x)dx \]
 
 \end{easylist}
-\subsection*{}
+\subsection*{Nth-Order Linear ODE (Homogeneous)}
 \begineasylist
+\begin{align*}
+y^{(n)} + p_1(x)y^{(n-1)} + \ldots + p_{n-1}(x)y' + p_{n}y &= r(x)\\
+&= L[y] \quad \text{(\underline{differential operator})}
+\end{align*}
+# \textbf{General solution}:
+\begin{align*}
+&y = c_1y_1 + \ldots + c_ny_n\\
+&\text{where } y_1 \ldots y_n \text{ are linearly independent \underline{particular solutions}}
+\end{align*}
+
+\end{easylist}
+\subsection*{Nth-Order Linear ODE (Homogeneous w/ Constant Coefficients)}
+\begineasylist
+
+# \textbf{Characteristic equation} of $L[y] = 0$ is:
+\[ \lambda^n + a_{n-1}\lambda^{n-1} + \ldots + a_1\lambda + a_0 = 0 \qquad \text{with roots } \lambda_1 \ldots \lambda_n \]
+
+# \textbf{General solution}:
+\begin{align*}
+&y = c_1e^{\lambda_1x} + \ldots + c_ne^{\lambda_nx}\\
+&\text{where every } y = e^{\lambda x} \text{ is linearly independent if every } \lambda \text{ is distinct}
+\end{align*}
+
+# \textbf{Repeated roots}: for a root $\lambda$ of order $k$, 
+\begin{align*}
+e^{\lambda x}, xe^{\lambda x}, x^2e^{\lambda x} \ldots x^{k-1}e^{\lambda x} \qquad \text{are linearly independent solutions}
+\end{align*}
+
+# \textbf{Complex roots}: for two complex roots $\lambda_1 = ik, \lambda_2 = -ik$,
+\begin{align*}
+y = c_1e^{ikx} + c_1e^{-ikx} = A\cos(kx) + B\sin(kx)
+\end{align*}
+
+\end{easylist}
+\subsection*{Nth-Order Linear ODE (Nonhomogeneous)}
+\begineasylist
+\[ L[y] = f_1(x) + \ldots + f_k(x) \]
+
+# \textbf{General solution}:
+\begin{align*}
+&y = y_h + y_{p1} + \ldots + y_{pk}\\
+\\
+&\text{where $y_h$ is a \underline{general solution} of $L[y] = 0$}\\
+&\text{and $y_{pi}$ is a \underline{particular solution} of $L[y] = f_i(x)$}
+\end{align*}
+
+# \textbf{Method of undetermined coefficients}:
+## $f_i(x) \quad \rightarrow \quad y_pi(x) = $ sum of \underline{linear independent derivatives}
+## $f_i(x) = e^{kx} \quad \rightarrow \quad y_pi(x) = Ce^{kx}$
+## $f_i(x) = x^n, n \geq 0 \quad \rightarrow \quad y_pi(x) = C_nx^n + \ldots + C_1x + C_0$
+## $f_i(x) = \cos(kx), \sin(kx) \quad \rightarrow \quad y_pi(x) = A\cos(kx) + B\sin(kx)$
+## $f_i(x) = e^{rx}\cos(kx), e^{rx}\sin(kx) \quad \rightarrow \quad y_pi(x) = e^{rx}A\cos(kx) + B\sin(kx)$
+## Substitute $y_p$ into LHS and match coefficients with RHS:
+\[ L[y_p] = f(x) \qquad \text{and solve for constants} \]
+
+
+\end{easylist}
+\subsection*{Laplace Transform}
+\begineasylist
+
+\[ F(s) = L\{f\}(t) = \int_0^\infty f(t)e^{-st}dt \]
+
+# \textbf{Transforms of derivatives}:
+\[ L\{f'\} = sF - f(0) \]
+\[ L\{f^{(n)}\} = s^nF - s^{n-1}f(0) - \ldots - sf^{(n-2)}(0) - f^{(n-1)}(0) \]
+
+# \textbf{Transforms of integrals}:
+\[ L\{ \int_0^t f(r)dr \} = \frac{F}{s} \]
+
+# \textbf{Derivatives of transforms} (multiplication):
+\[ L\{tf(t)\} = -F'(s) \]
+
+# \textbf{Integrals of transforms} (division):
+\[ L\{\frac{f(t)}{t}\} = \int_s^\infty F(r)dr \]
+
+# \textbf{S-shifting}:
+\[ L\{ e^{at}f(t) \} = F(s-a) \]
+
+# \textbf{T-shifting}:
+\[ L\{f(t-a)H(t-a)\} = e^{-as}F(s) \]
+
+# \textbf{Dirac's delta function}:
+\[ L\{ \delta(t-a)f(t) \} = e^{-as}f(a) \]
+
+# \textbf{Periodic functions}: if $f(t + T) = f(t)$ for all $t$ in domain,
+\[ L\{f(t)\} = \frac{1}{1-e^{-sT}}\int_0^T f(t)e^{-st}dt \]
+
+# \textbf{Convolution}:
+\[ F(s)G(s) = L\{f(t) * g(t)\} = L\{\int_0^t f(r)g(t-r)dr\} \]
+
+# \textbf{Initial value theorem}: if $f$ is continuous, $f'$ is piecewise continuous, and $f, f'$ are of exponential order,
+\[ \lim_{s\rightarrow\infty} sF(s) = f(0) \]
 
 \end{easylist}
 
