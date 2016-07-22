@@ -70,10 +70,58 @@
 
 
 \end{easylist}
-\subsection*{S}
+\subsection*{Replacement Decisions}
 \begineasylist
 
+# \textbf{Equivalent Annual Cost (EAC)}
 
+
+
+\end{easylist}
+\subsection*{Taxes}
+\begineasylist
+
+# As an approximation:
+## Profit$_{\text{after-tax}}$ = Profit$_{\text{before-tax}}\times (1 - t)$
+## MARR$_{\text{after-tax}}$ = MARR$_{\text{before-tax}}\times (1 - t)$
+## IRR$_{\text{after-tax}}$ = IRR$_{\text{before-tax}}\times (1 - t)$
+## Where $t = $ corporate tax rate
+
+# Effects of taxes on cash flows (\underline{straight-line}):
+## $-$First cost$_{at}$ = $-$First cost$_{bt} + $ First cost$_{bt} \times t / N \times (P/A, i, N)$
+### First cost$ \times t / N =$ annual tax savings due to the depreciation expense
+## Savings$_{at}$ = Savings$_{bt} \times (1-t)$
+## Salvage value$_{at}$ = Salvage value$_{bt} \times (1-t)$
+
+# Businesses want to depreciate assets as quickly as possible = receive tax savings earlier = savings are worth more
+
+# \textbf{Capital Cost Allowance (CCA)}: maximum amount of depreciation that a business can claim in a year
+## Usually calculated as a percentage of assets: the \textbf{CCA rate}
+
+# \textbf{Undepreciated Capital Cost (UCC)}: value of assets from which the CCA for a year is calculated
+\[ UCC_{i+1} = UCC_i + \text{purchases}_i - \text{salvages}_i - CCA_i \]
+
+# \textbf{Half-year rule}: for net purchases, half is added to the base UCC used to calculate CCA for the current year, and half is added to that of the next year
+## Intended to reduce tax savings
+## Without half-year rule: $UCC_n = P(1-d)^n$
+## With half-year rule: $UCC_n = P(1 - \dfrac{d}{2})(1-d)^{n-1}$
+
+# \textbf{Capital tax factor}: present worth of an asset, taking into account all future tax benefits due to depreciation
+\[ CTF = 1 - \frac{td(1 + i/2)}{(i + d)(1 + i)} \]
+
+# \textbf{Capital salvage factor}: present worth of an asset's salvage value, taking into account the ongoing effect of tax benefits
+\[ CSF = 1 - \frac{td}{i + d} \]
+
+# Effects of taxes on cash flows (\underline{declining-balance, with half-year rule}):
+## First cost$_{at}$ = First cost$_{bt} \times CTF$ 
+## Savings$_{at}$ = Savings$_{bt} \times (1-t)$
+## Salvage value$_{at}$ = Salvage value$_{bt} \times CSF$
+## e.g. finding the annual worth of a purchase with taxes, given first cost, annual revenue, and salvage value (all before taxes):
+\[ AW = -P_{bt}(A/P, i, N)CTF + A_{bt}(1 - t) + S_{bt}(A/F, i, N)CSF \]
+
+\end{easylist}
+\subsection*{Inflation}
+\begineasylist
 
 \end{easylist}
 
