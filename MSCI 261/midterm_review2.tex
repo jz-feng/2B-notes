@@ -82,9 +82,9 @@
 \begineasylist
 
 # As an approximation:
-## Profit$_{\text{after-tax}}$ = Profit$_{\text{before-tax}}\times (1 - t)$
-## MARR$_{\text{after-tax}}$ = MARR$_{\text{before-tax}}\times (1 - t)$
-## IRR$_{\text{after-tax}}$ = IRR$_{\text{before-tax}}\times (1 - t)$
+## Profit$_{\text{after-tax}} \approx$ Profit$_{\text{before-tax}}\times (1 - t)$
+## MARR$_{\text{after-tax}} \approx$ MARR$_{\text{before-tax}}\times (1 - t)$
+## IRR$_{\text{after-tax}} \approx$ IRR$_{\text{before-tax}}\times (1 - t)$
 ## Where $t = $ corporate tax rate
 
 # Effects of taxes on cash flows (\underline{straight-line}):
@@ -122,6 +122,40 @@
 \end{easylist}
 \subsection*{Inflation}
 \begineasylist
+
+# \textbf{Inflation}: increase in average price of goods \& services, decrease in purchasing power of currency
+## \textbf{Deflation} describes the oppposite
+
+# \textbf{Consumer Price Index (CPI)}: a measure of purchasing power of currency
+## Relates the avg. price of a fixed amount of some good in a given year (\emph{in the future}) with that of the \underline{base year} (\emph{now})
+\[ CPI = \frac{\text{avg price of G\&S in year } i}{\text{avg price of G\&S in year } 0} \times 100 \]
+
+# \textbf{Inflation rate} $= f =$ change in CPI every year
+
+# \textbf{Real dollars} = equivalent value of money in a specified \underline{base year} (a \emph{present worth} of money)
+
+# \textbf{Current/actual/nominal dollars} = value of money at the time of cash flow (a \emph{future worth} of money)
+\[ R_{0,N} = \frac{C_N}{I_{0,N}/100} = \frac{C_N}{(1 + f)^N} = C_N(P/F, f, N) \]
+## $R_{0,N} =$ real value of $C_N$ relative to year 0, the base year
+## $C_N =$ current dollars in year $N$
+## $I_{0,N} =$ value of CPI at year $N$, relative to year 0
+## $f =$ inflation rate per year
+
+# \textbf{Real interest rate}
+\[ i' = \frac{1+i}{1+f} - 1 \]
+\[ i = i' + f + i'f \]
+
+# \textbf{Real MARR}
+\[ MARR_R = \frac{1+MARR_C}{1+f} - 1 \]
+\[ MARR_C = MARR_R + f + MARR_R \cdot f \]
+
+# \textbf{Real IRR}
+\[ IRR_R = \frac{1+IRR_C}{1+f} - 1 \]
+\[ IRR_C = IRR_R + f + IRR_R \cdot f \]
+
+# Only evaluate investments using \textbf{current dollars} and \textbf{current MARR/IRR}, \underline{OR} \textbf{real dollars} and \textbf{real MARR/IRR}
+
+# With taxes, calculate tax benefits \underline{first}, then convert from current to real dollars
 
 \end{easylist}
 
