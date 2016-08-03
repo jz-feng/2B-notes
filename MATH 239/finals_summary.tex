@@ -1,0 +1,113 @@
+\documentclass[11pt, oneside]{article}
+\usepackage[margin=1in]{geometry}
+\geometry{letterpaper}
+\usepackage{amssymb}
+\usepackage[fleqn]{amsmath}
+\usepackage[sharp]{easylist}
+\usepackage{relsize}
+
+\pagenumbering{gobble}              % No page numbering
+\setlength{\parindent}{0em}         % No paragraph indenting
+\setlength{\parskip}{0.5em}         % Paragraph spacing
+
+\newcommand*{\begineasylist}{\begin{easylist}[itemize]\ListProperties(Style*=$\bullet$\quad, Style2*=\tiny$\blacksquare$\quad, Style3*=$\circ$\quad, Style4*=$\diamond$\quad, FinalSpace=1em, Space=0em, Space*=0em)}
+
+\newcommand*{\begineasylistnumbered}{\begin{easylist}[enumerate]\ListProperties(Numbers=a, Space=0em, Space*=0em)}
+
+\begin{document}
+
+\section*{MATH 239 Summary Sheet}
+
+\subsection*{Graphs}
+\begineasylist
+
+# $V(G)$ = set of \textbf{vertices} in the graph $G$
+
+# $E(G)$ = set of \textbf{edges} in the graph $G$
+
+# ``$k$-regular graph'' = every vertex has degree $k$
+
+# ``Complete graph'' ($K_n$) = all vertices are adjacent; i.e. $(n-1)$-regular
+
+# ``Complete bipartite graph'' ($K_{m,n}$) = all vertices in one partition are adjacent to all vertices in other partition
+
+# \textbf{Handshaking Lemma:} 
+\[ \sum_{v \in V(G)} deg(v) = 2 |E(G)| \]
+
+\end{easylist}
+\subsection*{Paths and Cycles}
+\begineasylist
+
+# \textbf{Theorem:} $\exists$ a \underline{walk} between $u,v$ in $G$ $\implies$ $\exists$ a \underline{path} between $u,v$ in $G$ 
+
+## \textbf{Corollary:} $\exists$ a path between $x,y$ AND $\exists$ a path between $y,z$ $\implies$ $\exists$ a path between $x,z$
+
+# \textbf{Theorem:} every vertex in $G$ has degree $\geq 2$ $\implies$ $G$ contains a cycle
+
+\end{easylist}
+\subsection*{Connectedness}
+\begineasylist
+
+# Fix vertex $v$ in $G$; 
+## $\forall$ vertex $w$ in $G$, $\exists$ path between $v,w$ $\implies$ $G$ is \textbf{connected}
+
+# Let $X \subset V(G)$;
+## ``Cut induced by $X$'' = set of edges with exactly one vertex $\in X$
+## \textbf{Theorem:} $G$ is \underline{not connected} $\iff$ $\exists$ $X$ such that cut induced by $X$ is empty
+
+# ``Eulerian circuit'' = closed walk that contains every edge exactly once
+
+# \textbf{Theorem:} $G$ has Eulerian circuit $\iff$ $G$ is connected AND every vertex has even degree
+
+# \textbf{Lemma:} $G$ is connected AND $e$ is a bridge $\implies$ $G - e$ has exactly 2 components
+
+# \textbf{Theorem:} $e$ is a bridge $\iff$ $e$ is not contained in any cycle
+
+## \textbf{Corollary:} $\exists$ 2 distinct paths between $u,v$ in $G$ $\implies$ $G$ contains a cycle
+
+\end{easylist}
+\subsection*{Trees}
+\begineasylist
+
+# ``Tree'' = \underline{connected graph} with \underline{no cycles}
+
+# ``Leaf'' = vertex in a tree with degree 1
+
+# Let $T$ be a tree;
+
+## \textbf{Lemma:} $\exists$ a unique path between every $u,v$ in $T$ 
+
+## \textbf{Lemma:} every edge in $T$ is a bridge
+
+## \textbf{Theorem:} $T$ has $\geq 2$ vertices $\implies$ $T$ has $\geq 2$ leaves
+
+## \textbf{Theorem:} $|E(T)| = |V(T)| - 1$
+
+# \textbf{Theorem:} $G$ is connected $\iff$ $G$ has a spanning tree
+
+## \textbf{Corollary:} $G$ is connected AND $G$ has $p$ vertices and $q = p-1$ edges $\implies$ $G$ is a tree
+
+# \textbf{Theorem:} $T$ is a spanning tree of $G$ AND $e$ is an edge $\notin T$  $\implies$ $T + e$ contains exactly 1 cycle $C$
+## Also: $e'$ is an edge $\in C$ $\implies$ $T + e - e'$ is also a spanning tree of $G$
+
+\end{easylist}
+\subsection*{Bipartites}
+\begineasylist
+
+# \textbf{Theorem:} all trees are bipartite
+
+# \textbf{Theorem:} $G$ is bipartite $\iff$ $G$ contains no \underline{odd cycles}
+
+\end{easylist}
+\subsection*{Minimum Spanning Tree}
+\begineasylist
+
+# \textbf{Prim's Algorithm:}
+## Begin with a vertex in $G$ and add it to $T$
+## At each step, find the \underline{lowest-weight edge} that joins a vertex in $T$ with a vertex not in $T$
+## Follow this edge and add the vertex to $T$; repeat
+
+
+\end{easylist}
+
+\end{document}
