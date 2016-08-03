@@ -107,6 +107,57 @@
 ## At each step, find the \underline{lowest-weight edge} that joins a vertex in $T$ with a vertex not in $T$
 ## Follow this edge and add the vertex to $T$; repeat
 
+\end{easylist}
+\subsection*{Planarity}
+\begineasylist
+
+# \textbf{Handshaking Lemma for Faces (Faceshaking Lemma):}
+\[ \sum_{f \in faces} deg(f) = 2|E(G)| \]
+
+# \textbf{Euler's Formula:} let $G$ be a connected graph with $p$ vertices and $q$ edges; if G has a planar embedding with $f$ faces, then
+\[ p - q + f = 2 \]
+
+# \textbf{Theorem:} a graph is planar $\iff$ it can be drawn on the surface of a sphere
+
+# ``Platonic graph'' = graph whose planar embedding has vertices all with degree $d \geq 3$ and faces all with degree $d^* \geq 3$
+
+# \textbf{Theorem:} there are exactly 5 platonic graphs
+
+# \textbf{Lemma:} $(d, d^*)$ pairs are: $(3,3), (3,4), (4,3), (3,5), (5,3)$
+
+# \textbf{Lemma:} $G$ is a platonic graph with $p$ vertices of degree $d$, $q$ edges, and $f$ faces of degree $d^*$, then:
+\begin{align*}
+q = \frac{2dd^*}{2d + 2d^* - dd*} \qquad \qquad \qquad
+p = \frac{2q}{d} \qquad \qquad \qquad
+f = \frac{2q}{d^*}
+\end{align*}
+    
+# \textbf{Theorem:} if a graph is connected and planar with $p \geq 3$ vertices and $q$ edges, then $q \leq 3p -6$
+## \textbf{Corollary:} a planar graph has a vertex of degree $< 6$
+
+# Note: $K_5$ and $K_{3,3}$ are not planar
+
+# \textbf{Kuratowski's Theorem:} $G$ is \underline{not planar} $\iff$ $G$ contains a edge subdivision of $K_5$ or $K_{3,3}$
+
+# \textbf{Theorem:} $G$ is 2-colourable $\iff$ $G$ is bipartite
+
+# \textbf{Theorem:} $K_n$ is $n$-colourable
+
+# \textbf{Theorem:} every vertex of $G$ has degree $\leq d$ $\implies$ $G$ is $(d+1)$-colourable
+
+# \textbf{Four Colour Theorem:} every planar graph is 4-colourable
+
+\end{easylist}
+\subsection*{Matchings and Covers}
+\begineasylist
+
+# \textbf{Lemma:} $M$ has an augmenting path $\implies$ $M$ is not a maximum matching
+
+# \textbf{Lemma:} $M$ is a matching of $G$ AND $C$ is a cover of $G$ $\implies$ $|M| \leq |C|$
+
+# \textbf{Lemma:} $|M| = |C|$ $\implies$ $M$ is a maximum matching and $C$ is a minimum cover
+
+# \textbf{Konig's Theorem:} in a bipartite graph, the max size of a matching = min size of a cover
 
 \end{easylist}
 
