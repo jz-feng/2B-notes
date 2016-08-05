@@ -62,7 +62,7 @@ T(2^k) &= T(2^{k-1}) + c\\
 
 
 \end{easylist}
-\subsection*{Priorty Queues and Heaps}
+\subsection*{Priority Queues and Heaps}
 \begineasylist
 
 # \textbf{Priority queue}: an \textbf{abstract data type} containing a collection of items each with a priority
@@ -370,6 +370,104 @@ T(2^k) &= T(2^{k-1}) + c\\
 \end{easylist}
 \subsection*{Compression}
 \begineasylist
+
+# \textbf{Compression ratio} = $\dfrac{|C| \cdot \log |\Sigma_C|}{|S| \cdot \log |\Sigma_S|}$ where $S$ = source text, $C$ = encoded text
+
+# Fix/variable-length codes: the encoding of each character of text has the same/different length
+
+# \textbf{Huffman encoding}: $\Sigma_C = \{0, 1\}$
+## Binary trie where $\Sigma_S$ is stored in leaf nodes
+### Path from root to each leaf generates the binary encoding of each character
+### Begin with single nodes containing each character and its weight (\underline{\# of occurrences in $S$})
+### Combine tries with lowest weights until only one trie remains
+### Results in characters with higher frequencies being closer to root node
+## Dictionary trie must be sent along with $C$ for decoding
+
+# \textbf{Run-length encoding}: $\Sigma_S = \Sigma_C = \{0, 1\}$
+## Set $C[0] = S[0]$ to indicate the alternating sequence of 0's and 1's in $S$
+## For a run of 0/1 of length $k$:
+### $C$ = [$\lfloor \log k \rfloor$ 0's][binary representation of $k$]
+## Only efficient for run lengths of $k \geq 6$
+
+# Adaptive encoding: expand the dictionary as text is being encoded/decoded
+
+# \textbf{Lempel-Ziv/LZW}:
+## Effective on English text
+## Encoding:
+### Each time, read \& encode the longest substring of $S$ that exists in the dictionary
+### For every substring $x$ in $S$ encoded, add $xc$ to the dictionary where $c$ is the character that follows $x$ in $S$
+
+## Decoding:
+### For each decoded substring $y$ and the last decoded substring $x$, add $xc$ to the dictionary where $c = y[0]$
+### If decoding a substring that has yet to be added to the dictionary, let $y = x + x[0]$
+
+# \textbf{Text transformation}: change source text to make it more compressible
+## Transformation must be reversible
+
+# \textbf{Move-to-Front}:
+## Encoding outputs sequence of indices accessed by reading $S$ (i.e. $|\Sigma_C| = |\Sigma_S|$)
+## Decoding outputs characters by accessing dictionary at indices given by $C$
+## Encoding \& decoding work the same way: read one character/index and move it to front of the array
+
+# \textbf{Burrows-Wheeler Transform}:
+## Produces runs of characters
+## Encoding:
+### Sorts all \underline{cyclic shifts} (i.e. in-place rotations) of $S$; store in $L$
+### $C$ = list of the last character of every string in $L$
+
+# Decoding:
+## Generate list $(C[i], i)$ pairs from $C$ and sort them by $C[i]$
+## Store the sequence of $i$'s in the sorted list in an array $N$
+## Begin with $j = $ index of \$ in $C$
+## Generate $S$ by setting $j = N[j]$ and appending $C[j]$
+
+\end{easylist}
+\subsection*{Memory Data Structures}
+\begineasylist
+
+# \textbf{B-tree/2-3 tree}:
+## Each internal node either has \underline{1 KVP and 2 children} or \underline{2 KVP and 3 children}
+## All leaves do not hold KVPs and are on the same level
+## Search: if node has 2 KVPs, traverse to one of 3 children based on $x < a, a < x < b, b < x$
+
+## Insertion: find the lowest internal node and insert KVP
+### If node has 3 KVPs, \underline{promote} the middle to parent node (recurse if necessary), split the other 2 to individual nodes
+
+## Deletion: swap KVP with in-order \emph{successor} so it's in a leaf node ($N$)
+### If $N$ has 2 KVPs, just delete
+### Otherwise if \underline{immediate sibling} $M$ (they share a parent $P$) has 2 KVPs, replace $N[0] \leftarrow U$ and $U \leftarrow M[1]$ and remove $M[1]$ (perform a \underline{transfer})
+#### Where $U$ = \underline{intermediate value} between $N$ and $M$ in $P$ (i.e. successor/predecessor of $N$)
+#### Similar to a rotation in AVL
+### Otherwise if $M$ has 1 KVP, remove $N$ and merge intermediate value in parent $P$ into sibling $M$; recurse upwards and promote if necessary
+
+## An \textbf{(a,b)-tree} is a tree where:
+### The root has at least 2 children
+### Each internal node has $a \leq k \leq b$ children
+### A node that has $k$ children stores $k-1$ KVPs
+### Leaves store no KVPs and are on the same level
+
+## A \textbf{B-tree} of \underline{order M} is a ($\lceil M/2 \rceil, M$)-tree
+### Height with $n$ nodes $\in \Theta\left(\dfrac{\log n}{\log M}\right)$
+### Search, insert, delete $\in O(\log n)$
+
+# \textbf{Extendible hashing}:
+## Use a B-tree with height 1 and max $S$ KVPs in a node
+## Root node contains array (\underline{directory}) of size $2^d$ where $d$ = order
+## Each entry points to a block, which holds $\leq S$ items
+## Each block $B$ has a \underline{local depth} $k_B \leq d$
+### All values in $B$ have the same first $k_B$ bits
+
+## Search for $k$: lookup first $d$ bits of $h(k)$ and load the block into memory
+### Search block for $k$
+
+## Insertion: search for $k$ and find block $B$
+### If $B$ has space, insert
+### Otherwise if $B$ has $S$ items and $k_B < d$, split $B$ and increment $k_B$ (if necessary)
+### Otherwise if $B$ has $S$ items and $k_B = d$, double the directory (increment $d$) and split $B$
+
+## Deletion: search and remove $k$
+### If possible, merge neighbour blocks (reverse of block split)
+### If every block has $k_B < d$, shrink the directory (reverse of directory grow)
 
 \end{easylist}
 
