@@ -353,6 +353,71 @@
 \subsection*{STL (Standard Template Library)}
 \begineasylist
 
+# \textbf{STL containers}
+## Sequence containers: contiguous collection of variables; ordered (requires \texttt{operator<})
+
+### \texttt{std::vector}
+#### Wrapper around a C-style array (contiguous memory)
+#### \underline{Reallocation invalidates pointers} to elements
+
+### \texttt{std::deque}
+#### Push/pop at front \emph{and} back
+#### Growing the deque \underline{preserves pointers}
+
+### \texttt{std::list}
+#### Doubly-linked list; no random access
+
+### \texttt{std::forward\_list}
+#### Singly-linked list; no random access
+
+### \texttt{std::array}
+#### Fixed-size vector
+
+## Container adapters: 
+### \texttt{std::stack}, \texttt{std::queue}, \texttt{std::priority\_queue}
+### Can specify which container to use (e.g. vector, deque etc.)
+### \underline{Has (not inherits)} a private container member, to which operations are delegated
+### \textbf{Adaptation}: extend a STL container by creating an adapter interface around it (as opposed to inheritance)
+### \textbf{Private inheritance}: reuse base class's implementation without supporting its interface
+#### Public \& protected API of base class are \underline{private} in the child class
+#### Child class \underline{is not a subtype}; cannot be used polymorphically
+#### Similar to adaptation
+
+## Associative containers:
+### Ordered containers: ordered based on value of key; implemented using BST
+#### \texttt{std::[multi]map}, \texttt{std::[multi]set}
+
+### Unordered containers: no particular ordering; implemented using hash tables
+#### \texttt{std::unordered\_[multi]map}, \texttt{std::unordered\_[multi]set}
+
+# \textbf{STL iterators}
+## In decreasing hierarchy: 
+## \textbf{Input/output iterator}: read-only/write-only, each location may only be visited once
+## \textbf{Forward iterator}: can visit each location multiple times, can only move foward
+## \textbf{Bidirectional iterator}: can iterate forwards and backwards
+## \textbf{Random accessor iterator}: allows iterator arithmetic
+## Use \texttt{back\_inserter}/\texttt{front\_inserter} to perform \texttt{push\_back()}/\texttt{push\_front()} on containers
+
+# \textbf{STL algorithms}
+## Use inserters when adding elements to containers (e.g. \texttt{std::copy} on vectors)
+## Algorithms don't remove elements; ``removed'' elements are placed at the back of the container, and an iterator just past the last ``valid'' element is returned
+
+# \textbf{Functors}
+## Overload \texttt{operator()} to create function objects
+### e.g. a binary function: \texttt{int operator() ( int a, int b) \{ return a + b; \}}
+
+# \textbf{Function object adapters}
+## \texttt{mem\_fun\_ref}/\texttt{mem\_fun}: convert a member function (of the container the algorithm is using) to a function object that can be passed to the algorithm
+### Use \texttt{mem\_fun\_ref} for non-pointers (e.g. \texttt{string.length()})
+### Use \texttt{mem\_fun} for pointers (e.g. \texttt{obj->size()})
+
+
+\end{easylist}
+\subsection*{Lambdas}
+\begineasylist
+
+# 
+
 
 \end{easylist}
 
