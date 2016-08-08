@@ -233,14 +233,12 @@
 
 # \textbf{Inheritance}
 ## Parent class's methods are inherited by child classes
-### Classes' methods share the same implementation structure
-### Only differences are the data values
 ## Downside: not all subclasses may want to inherit parent behaviour
 ## Downside: code duplication
 
 # \textbf{Strategy pattern}
 ## Allows the implementation of an algorithm/method to be changed at runtime \\(\underline{encapsulation of algorithm})
-## Allows the algorithm to \underline{vary independently from clients} that use it
+## Allows the algorithm to vary independently from clients that use it
 ## e.g. data structure holds an instance of base Strategy class, calls the algorithm/method (which is \emph{pure virtual} in base class)
 ### Concrete methods with differing behaviour are implemented in Strategy subclasses
 ### Strategy can be changed (to other subclasses) at runtime, changing the method's behaviour
@@ -263,7 +261,7 @@
 
 # \textbf{Adapter pattern}
 ## Adapter \underline{maps one interface to another}
-## e.g. interfaces of an existing module does not match with a new module
+## e.g. interface of an existing module does not match with a new module
 ## e.g. wrapping an existing data structure interface to create a new data structure
 
 \begin{figure}[!ht]
@@ -295,12 +293,12 @@
 
 \begin{figure}[!ht]
     \centering
-    \includegraphics[width=0.6\textwidth]{res/observer.png}
+    \includegraphics[width=0.5\textwidth]{res/observer.png}
 \end{figure}
 
 # \textbf{MVC pattern}
 ## UI code is abstracted into the \textbf{view}
-### Composite pattern: all view elements use the same base class (uniform interfaec)
+### Composite pattern: all view elements use the same base class (uniform interface)
 
 ## \textbf{Controller} translates user input (from the view) into operations on the model
 ### Strategy pattern: controller provides the view with a strategy; controller behaviour can be changed by swapping for a different strategy
@@ -308,6 +306,52 @@
 ## \textbf{Model} holds data, state, and application logic
 ### Observer pattern: model = subject; views = observers; model sends out notification on state change, triggering views to update accordingly
 
+# \textbf{Composite pattern}
+## Components have a \underline{uniform interface}, and a \underline{union of leaf \& composite's services}
+## Components are organized in a tree structure
+## Set defaults in the base class for leaf-only or component-only operations (override in subclasses)
+
+\begin{figure}[!ht]
+    \centering
+    \includegraphics[width=0.65\textwidth]{res/composite.png}
+\end{figure}
+
+# \textbf{Iterator pattern}
+## Allows iteration through the elements of a collection without exposing representation
+## Composite pattern iteration:
+### Traverse tree using DFS (w/ a stack)
+### Define iterator subclasses for both leaf and composite classes
+
+\begin{figure}[!ht]
+    \centering
+    \includegraphics[width=0.7\textwidth]{res/iterator.png}
+\end{figure}
+
+# \textbf{Decorator pattern}
+## Allows extra features to be added/removed to an object at runtime, by building wrappers
+## Pass component into decorator to construct the original component w/ added functionality
+### e.g. \texttt{Component* comp = new Component(); comp = new Decorator(comp);}
+
+\begin{figure}[!ht]
+    \centering
+    \includegraphics[width=0.7\textwidth]{res/decorator.png}
+\end{figure}
+
+\newpage
+# \textbf{Factory pattern}
+## Uses the template pattern (encapsulates object creation)
+## Abstract factory class defines the interface for object creation; concrete factory subclasses decide which object/how to construct
+
+\begin{figure}[!ht]
+    \centering
+    \includegraphics[width=0.7\textwidth]{res/factory.png}
+\end{figure}
+
+
+\end{easylist}
+\newpage
+\subsection*{STL (Standard Template Library)}
+\begineasylist
 
 
 \end{easylist}
