@@ -1,0 +1,270 @@
+\documentclass[11pt, oneside]{article}
+\usepackage[margin=1in]{geometry}
+\geometry{letterpaper}
+\usepackage{amssymb}
+\usepackage[fleqn]{amsmath}
+\usepackage[sharp]{easylist}
+\usepackage{relsize}
+
+\pagenumbering{gobble}              % No page numbering
+\setlength{\parindent}{0em}         % No paragraph indenting
+\setlength{\parskip}{0.5em}         % Paragraph spacing
+
+\newcommand*{\begineasylist}{\begin{easylist}[itemize]\ListProperties(Style*=$\bullet$\quad, Style2*=\tiny$\blacksquare$\quad, Style3*=$\circ$\quad, Style4*=$\diamond$\quad, FinalSpace=1em, Space=0em, Space*=0em)}
+
+\newcommand*{\begineasylistnumbered}{\begin{easylist}[enumerate]\ListProperties(Numbers=a, Space=0em, Space*=0em)}
+
+\begin{document}
+
+\section*{MATH 213 (Important Results)}
+
+\subsection*{Separable ODE}
+\begineasylist
+
+# \textbf{Goal}: separate functions and derivatives of $x$ and $y$ to either side of the equation
+\begin{align*}
+f(x) &= g(y)y'\\
+\implies \int f(x)dx &= \int g(y)dy \qquad \text{then integrate both sides as normal}
+\end{align*}
+
+\end{easylist}
+\subsection*{Exact ODE}
+\begineasylist
+\begin{align*}
+M(x,y)dx + N(x,y)dy &= 0\\
+&= du \quad \text{where $u$ is some function of $x$ and $y$}
+\end{align*}
+# \textbf{Goal}: find function $u(x,y) = C$ (aka. an implicit solution of $y$)
+# The equation is \textbf{exact} if \& only if $\dfrac{\partial M}{\partial y} = \dfrac{\partial N}{\partial x}$
+\begin{align*}
+u &= \int Mdx + k(y)\\
+\text{then set} \quad N &= \frac{\partial u}{\partial y} \quad \text{to solve for $k(y)$}
+\end{align*}
+
+# Alternatively,
+\begin{align*}
+u &= \int Ndy + k(x)\\
+\text{then set} \quad M &= \frac{\partial u}{\partial x} \quad \text{to solve for $k(x)$}
+\end{align*}
+
+# If equation is \textbf{not exact}, find the \textbf{integrating factor} $\mu$ such that:
+\[ \frac{\partial}{\partial y} \mu M = \frac{\partial}{\partial x} \mu N \]
+\[ \text{then solve as} \quad \mu M(x,y)dx + \mu N(x,y)dy = 0 \]
+
+\end{easylist}
+\subsection*{First-Order Linear ODE (With Variable Coefficients)}
+\begineasylist
+
+# \textbf{Homogeneous}: $y' + p(x)y = 0$
+\[ y(x) = Ce^{-h}, \quad h = \int p(x)dx \]
+
+# \textbf{Nonhomogeneous}: $y' + p(x)y = q(x)$
+\[ y(x) = e^{-h}(\int e^hq(x)dx + C), \quad h = \int p(x)dx \]
+
+\end{easylist}
+\subsection*{Nth-Order Linear ODE (Homogeneous)}
+\begineasylist
+\begin{align*}
+y^{(n)} + p_1(x)y^{(n-1)} + \ldots + p_{n-1}(x)y' + p_{n}y &= r(x)\\
+&= L[y] \quad \text{(\underline{differential operator})}
+\end{align*}
+# \textbf{Goal}: find a \underline{family of functions} which are all solutions of the ODE (\textbf{General solution})
+\begin{align*}
+&y = c_1y_1 + \ldots + c_ny_n\\
+&\text{where } y_1 \ldots y_n \text{ are linearly independent \underline{particular solutions} (a specific function)}
+\end{align*}
+
+\end{easylist}
+\subsection*{Nth-Order Linear ODE (Homogeneous w/ Constant Coefficients)}
+\begineasylist
+
+# \textbf{Characteristic equation} of $L[y] = 0$ is:
+\[ \lambda^n + a_{n-1}\lambda^{n-1} + \ldots + a_1\lambda + a_0 = 0 \qquad \text{with roots } \lambda_1 \ldots \lambda_n \]
+
+# \textbf{General solution}:
+\begin{align*}
+&y = c_1e^{\lambda_1x} + \ldots + c_ne^{\lambda_nx}\\
+&\text{where every } y = e^{\lambda x} \text{ is linearly independent if every } \lambda \text{ is distinct}
+\end{align*}
+
+# \textbf{Repeated roots}: for a root $\lambda$ of order $k$, 
+\begin{align*}
+e^{\lambda x}, xe^{\lambda x}, x^2e^{\lambda x} \ldots x^{k-1}e^{\lambda x} \qquad \text{are linearly independent solutions}
+\end{align*}
+
+# \textbf{Complex roots}: for two complex roots $\lambda_1 = ik, \lambda_2 = -ik$,
+\begin{align*}
+y = c_1e^{ikx} + c_1e^{-ikx} = A\cos(kx) + B\sin(kx)
+\end{align*}
+
+\end{easylist}
+\subsection*{Nth-Order Linear ODE (Nonhomogeneous)}
+\begineasylist
+\[ L[y] = f_1(x) + \ldots + f_k(x) \]
+
+# \textbf{General solution}:
+\begin{align*}
+&y = y_h + y_{p1} + \ldots + y_{pk}\\
+\\
+&\text{where $y_h$ is a \underline{general solution} of $L[y] = 0$}\\
+&\text{and $y_{pi}$ is a \underline{particular solution} of $L[y] = f_i(x)$}
+\end{align*}
+
+# \textbf{Method of undetermined coefficients}:
+## $f_i(x) \hspace{10.1em} \rightarrow \quad y_pi(x) = $ sum of \underline{linear independent derivatives}
+## $f_i(x) = k \text{ (constant term)} \hspace{1em} \rightarrow \quad C$ 
+## $f_i(x) = e^{kx} \hspace{7.4em} \rightarrow \quad y_{pi}(x) = Ce^{kx}$
+## $f_i(x) = x^n, n \geq 0 \hspace{6.8em} \rightarrow \quad y_{pi}(x) = C_nx^n + \ldots + C_1x + C_0$
+## $f_i(x) = \cos(kx), \sin(kx) \hspace{3.9em} \rightarrow \quad y_{pi}(x) = A\cos(kx) + B\sin(kx)$
+## $f_i(x) = e^{rx}\cos(kx), e^{rx}\sin(kx) \hspace{1em} \rightarrow \quad y_{pi}(x) = e^{rx}A\cos(kx) + B\sin(kx)$
+## Substitute $y_p$ into LHS and match coefficients with RHS:
+\[ L[y_p] = f(x) \qquad \text{and solve for constants} \]
+
+
+\end{easylist}
+\subsection*{Laplace Transform}
+\begineasylist
+
+\[ F(s) = L\{f\}(t) = \int_0^\infty f(t)e^{-st}dt \]
+
+# \textbf{Transforms of derivatives}:
+\[ L\{f'\} = sF - f(0) \]
+\[ L\{f^{(n)}\} = s^nF - s^{n-1}f(0) - \ldots - sf^{(n-2)}(0) - f^{(n-1)}(0) \]
+
+# \textbf{Transforms of integrals}:
+\[ L\{ \int_0^t f(r)dr \} = \frac{F}{s} \]
+
+# \textbf{Derivatives of transforms} (multiplication):
+\[ L\{tf(t)\} = -F'(s) \]
+
+# \textbf{Integrals of transforms} (division):
+\[ L\{\frac{f(t)}{t}\} = \int_s^\infty F(r)dr \]
+
+# \textbf{S-shifting}:
+\[ L\{ e^{at}f(t) \} = F(s-a) \]
+
+# \textbf{T-shifting}:
+\[ L\{f(t-a)H(t-a)\} = e^{-as}F(s) \]
+\begin{align*}
+\text{where } H(t) &= 0 \qquad \text{if } t < 0\\
+&= 1 \qquad \text{if } t \geq 0
+\end{align*}
+
+# \textbf{Dirac's delta function}:
+\[ L\{ \delta(t-a)f(t) \} = e^{-as}f(a) \]
+\begin{align*}
+\text{where }\delta(t) &= ``\infty" \qquad \text{if } t = 0\\
+&= 0 \qquad \quad \text{elsewhere}
+\end{align*}
+\[ \text{and } \int_0^\infty \delta(t)dt = 1 \]
+
+
+# \textbf{Periodic functions}: if $f(t + T) = f(t)$ for all $t$ in domain,
+\[ L\{f(t)\} = \frac{1}{1-e^{-sT}}\int_0^T f(t)e^{-st}dt \]
+
+# \textbf{Convolution}:
+\[ F(s)G(s) = L\{f(t) * g(t)\} = L\{\int_0^t f(r)g(t-r)dr\} \]
+
+# \textbf{Initial value theorem}: if $f$ is continuous, $f'$ is piecewise continuous, and $f, f'$ are of exponential order,
+\[ \lim_{s\rightarrow\infty} sF(s) = f(0) \]
+
+# \textbf{Using Laplace in ODEs}:
+## Given with initial conditions $y(0), y'(0)$:
+\begin{align*}
+y'' + ay' + by &= f(t)\\
+L\{y'' + ay' + by\} &= F(s)\\
+(s^2Y - sy(0) - y'(0)) + a(sY - y(0)) + bY &= F(s)
+\end{align*}
+## Collect like terms, solve for $Y$
+## Solve for $y(t) = L^{-1}\{Y\}$
+
+\end{easylist}
+\newpage
+\subsection*{Vector Spaces}
+\begineasylist
+
+
+
+
+\end{easylist}
+\subsection*{Fourier Series}
+\begineasylist
+
+# For $f(x)$ with period $2L$, defined over $-L < x < L$
+\[ f(x) = a_0 + \sum_{n=1}^\infty \left(a_n \cos\left(\frac{n\pi x}{L}\right) + b_n \sin\left(\frac{n\pi x}{L}\right) \right) \]
+\[ a_0 = \frac{1}{2L} \int_{-L}^L f(x)dx \]
+\[ a_n = \frac{1}{L} \int_{-L}^L f(x) \cos\left(\frac{n\pi x}{L}\right)dx \]
+\[ b_n = \frac{1}{L} \int_{-L}^L f(x) \sin\left(\frac{n\pi x}{L}\right)dx \]
+
+# If $f(x)$ is even, the series only has $a_0$ and $a_n$ terms (\textbf{Fourier cosine series}) where
+\[ f(x) = a_0 + \sum_{n=1}^\infty a_n \cos\left(\frac{n\pi x}{L}\right) \]
+\[ a_0 = \frac{1}{L} \int_0^L f(x)dx \]
+\[ a_n = \frac{2}{L} \int_0^L f(x) \cos\left(\frac{n\pi x}{L}\right)dx \]
+
+# If $f(x)$ is odd, the series only has $b_n$ terms (\textbf{Fourier sine series}) where
+\[ f(x) = \sum_{n=1}^\infty b_n \sin\left(\frac{n\pi x}{L}\right) \]
+\[ b_n = \frac{2}{L} \int_0^L f(x) \sin\left(\frac{n\pi x}{L}\right)dx \]
+
+# \textbf{Complex exponential form}:
+\[ f(x) = \sum_{n=-\infty}^\infty c_n e^{in\pi x/L} \]
+\[ c_n = \frac{1}{2L} \int_{-L}^L f(x)e^{-in\pi x/L}dx \]
+## Note that
+\[ \sum_{n=-\infty}^\infty a_n \equiv \lim_{N \rightarrow \infty} \sum_{-N}^N a_n \]
+
+# \textbf{Half/quarter-range expansions}:
+## Half-range cosine expansion
+### Given $f(x)$ on $0 < x < L$, extend as an even periodic function on $-\infty < x < \infty$
+### Identical to \underline{Fourier cosine series} (with restriction on $0 < x < L$)
+
+## Half-range sine expansion
+### Given $f(x)$ on $0 < x < L$, extend as an odd periodic function on $-\infty < x < \infty$
+### Identical to \underline{Fourier sine series} (with restriction on $0 < x < L$)
+
+## Quarter-range cosine expansion
+\[ f(x) = \sum_{n=1,3,\ldots}^\infty a_n \cos\left(\frac{n\pi x}{2L}\right) \qquad (0 < x < L) \]
+\[ a_n = \frac{2}{L} \int_0^L f(x)\cos\left(\frac{n\pi x}{2L}\right) \]
+
+## Quarter-range sine expansion
+\[ f(x) = \sum_{n=1,3,\ldots}^\infty b_n \sin\left(\frac{n\pi x}{2L}\right) \qquad (0 < x < L) \]
+\[ b_n = \frac{2}{L} \int_0^L f(x)\sin\left(\frac{n\pi x}{2L}\right) \]
+
+# \underline{Some useful integrals}:
+\[ \int x\cos(nx) dx = \frac{x\sin(nx)}{n} + \frac{\cos(nx)}{n^2} \]
+\[ \int x\sin(nx) dx = -\frac{x\cos(nx)}{n} + \frac{\sin(nx)}{n^2} \]
+
+\end{easylist}
+\subsection*{Fourier Transform}
+\begineasylist
+
+# \textbf{Fourier integral}:
+\[ f(x) = \int_0^\infty (A(\omega)\cos\omega x + B(\omega)\sin\omega x )d\omega \]
+\[ A(\omega)= \frac{1}{\pi}\int_{-\infty}^\infty f(x)\cos\omega xdx \]
+\[ B(\omega)= \frac{1}{\pi}\int_{-\infty}^\infty f(x)\sin\omega xdx \]
+
+# \textbf{Fourier transform}:
+\[ F\{f(x)\} = \hat{f}(\omega) = \int_{-\infty}^\infty f(x)e^{-i\omega x}dx \]
+\[ F^{-1}\{\hat{f}(\omega)\} = f(x) = \frac{1}{2\pi}\int_{-\infty}^\infty \hat{f}(\omega)e^{i\omega x}d\omega \]
+
+# \textbf{Transforms of derivatives}:
+\[ F\{f'\} = i\omega\hat{f} \]
+\[ F\{f^{(n)}\} = (i\omega)^n \hat{f} \]
+
+# \textbf{Transforms of integrals}:
+\[ F\{ \int_{-\infty}^x f(r)dr \} = \frac{1}{i\omega}\hat f \]
+
+# \textbf{Derivatives of transforms} (multiplication):
+\[ F\{ x^nf \} = i^n\hat{f}^{(n)} \]
+
+# \textbf{x-shifting}:
+\[ F\{f(x-a)\} = e^{-ia\omega}\hat f \]
+
+# \textbf{w-shifting}:
+\[ F^{-1}\{\hat f(\omega - a)\} = e^{ia\omega}f \]
+
+# \textbf{Fourier convolution}:
+\[ \hat f \cdot \hat g = F\{f * g\} = F\{ \int_{-\infty}^\infty f(x-r)g(r)dr \} \]
+
+
+\end{easylist}
+
+\end{document}
